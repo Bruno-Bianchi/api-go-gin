@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  database_ignite:
+    image: postgres
+    container_name: database_alunos
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=alunos
+      - POSTGRES_PASSWORD=123 
+      - POSTGRES_DB=alunos 
+    volumes:
+      - ./pgdata:/data/postgres
+      
+  redis:
+    image: redis:alpine
+    container_name: redis_alunos
+    ports: 
+      - 6379:6379
+
+volumes:
+  pgdata:
+    driver: local
+
+networks:
+  default:
+     
